@@ -1,0 +1,169 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRAFTYSOFT</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/x-icon" href="https://media.licdn.com/dms/image/v2/D4D0BAQF1nqQhe3p06Q/company-logo_200_200/company-logo_200_200/0/1664960508577/crafty_soft_logo?e=2147483647&v=beta&t=IOW9hqdg11kypECWQe7U4c4zXem3TSwY5z3oL7UmN0g">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            {
+                $('.callback-input[type="tel"]').inputmask({
+                    mask: '380(99)999-99-99',
+                    placeholder: "380(__)___-__-__",
+                    showMaskOnHover: false,
+                    onBeforePaste: function (pastedValue, opts) {
+                        return pastedValue.replace(/\D/g, '');
+                    },
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div class="header-main">
+        <div class="menu-item">CRAFTYSOFT</div>
+        <div>
+            <a href="index.html"><button class="menu-button">Accueil</button></a>
+            <div class="menu-button-sub-wrapper"><button class="menu-button-sub">Clients</button>
+                <div class="menu-button-menu">
+                    <a href="catalog.html"><button class="menu-button-submenu">Produits</button></a>
+                    <a href="repair.html"><button class="menu-button-submenu">Réparation</button></a>
+                    <a href="index.html#salesection"><button class="menu-button-submenu">Promotions</button></a>
+                    <a href="contact.html#contact-review"><button class="menu-button-submenu">Avis</button></a>
+                    <a href="contact.html#contact-support"><button class="menu-button-submenu">Support</button></a>
+                    <a href="callback.html#faqcome"><button class="menu-button-submenu">FAQ</button></a>
+                </div>
+            </div>
+            <a href="contact.html"><button class="menu-button">À propos</button></a>
+        </div>
+        <div class="adress-item">
+        </div>
+        <div class="login-logo">
+            <img src="photo/loginlogo.png" width="15" height="15">
+        </div>
+        <div class="login-button">
+            <a href="authorization.php"><button class="menu-button" id="login-button">Espace personnel</button></a>
+        </div>
+    </div>
+    <div class="search-container">
+        <div class="menu-item" id="katalog-container">
+            <button class="katalog-button">Catalogue</button>
+            <div class="katalog-submenu">
+                <a href="catalog.html#catalog-section1"><button class="katalog-button-submenu">Ordinateurs</button></a>
+                <a href="catalog.html#catalog-section2"><button class="katalog-button-submenu">Cartes mères</button></a>
+                <a href="catalog.html#catalog-section3"><button class="katalog-button-submenu">Cartes graphiques</button></a>
+                <a href="catalog.html#catalog-section4"><button class="katalog-button-submenu">Processeurs</button></a>
+                <a href="catalog.html#catalog-section5"><button class="katalog-button-submenu">Mémoire vive</button></a>
+                <a href="catalog.html#catalog-section6"><button class="katalog-button-submenu">Moniteurs</button></a>
+                <a href="catalog.html#catalog-section7"><button class="katalog-button-submenu">Stockages</button></a>
+                <a href="catalog.html#catalog-section8"><button class="katalog-button-submenu">Alimentations</button></a>
+                <a href="catalog.html#catalog-section9"><button class="katalog-button-submenu">Périphériques</button></a>
+            </div>
+        </div>
+        <input type="text" class="search-input" placeholder="Recherche...">
+        <div class="menu-item"><a href="callback.html"><button class="menu-button"><img src="photo/phone.png" width="15" height="15"></button></a></div>
+        <div class="menu-item"><a href="cart.html"><button class="menu-button"><img src="photo/hfavorite.png" width="15" height="15"></button></a></div>
+        <div class="menu-item"><a href="cart.html"><button class="menu-button"><img src="photo/shopping-basket.png" width="15" height="15"></button></a></div>
+    </div>
+
+    <div class="callback-info">
+        <p style="color:white">
+            Contactez-nous pour obtenir des conseils professionnels et une assistance experte concernant votre matériel informatique !<br>
+            Nos spécialistes qualifiés sont prêts à vous aider pour le choix, l'achat ou la réparation de votre équipement.<br>
+            Remplissez le formulaire ci-dessous et nous vous contacterons dans les plus brefs délais pour discuter de vos besoins.<br>
+            N'hésitez pas à nous poser toutes vos questions ou à nous faire part de vos problèmes – nous sommes toujours là pour vous offrir le meilleur service !
+        </p>
+    </div>
+    <div class="queuelistcallback" style="display: flex; flex-direction: column; align-items: center; margin: 30px;">
+        <h3 style="color:white">Personnes actuellement en attente d'un appel :</h3>
+        <ul style="color:white" id="queue-list"></ul>
+    </div>
+    <div class="fontstyle callback-header">
+        <h2>Demander un rappel</h2>
+        <form id="callback-forms" class="callback-form">
+            <div style="display:flex">
+                <input type="text" id="name" placeholder="Votre nom" class="callback-input" required>
+                <input type="tel" id="phone" placeholder="(+216)___-__-__" class="callback-input" required>
+            </div>
+            <button type="submit" id="submit-button" class="callback-button">Envoyer</button>
+        </form>
+    </div>
+
+    <div class="MainFAQ" id="faqcome">
+        <div class="FAQItem">
+            <div class="FAQQuestion">1. Quels types de matériel informatique vendez-vous ?</div>
+            <div class="FAQAnswer">ByteVista est spécialisé dans la vente d'une large gamme de matériel informatique, y compris des ordinateurs portables, des PC, des moniteurs, des périphériques et des composants.</div>
+        </div>
+        <div class="FAQItem">
+            <div class="FAQQuestion">2. Offrez-vous une garantie sur vos produits ?</div>
+            <div class="FAQAnswer">Oui, nous offrons une garantie sur tous nos produits. La durée de la garantie varie selon le produit, mais elle est généralement de 1 à 3 ans selon le fabricant.</div>
+        </div>
+        <div class="FAQItem">
+            <div class="FAQQuestion">3. Quels services de réparation proposez-vous ?</div>
+            <div class="FAQAnswer">Nos services de réparation incluent le diagnostic et la remise en état des ordinateurs portables, PC, moniteurs et autres équipements informatiques. Nous remplaçons également les composants et effectuons des opérations de maintenance préventive.</div>
+        </div>
+        <div class="FAQItem">
+            <div class="FAQQuestion">4. Puis-je commander des pièces détachées pour mon ordinateur chez vous ?</div>
+            <div class="FAQAnswer">Oui, nous disposons d'un large choix de pièces détachées que vous pouvez commander via notre boutique en ligne ou directement en magasin.</div>
+        </div>
+        <div class="FAQItem">
+            <div class="FAQQuestion">5. Quels moyens de paiement acceptez-vous ?</div>
+            <div class="FAQAnswer">Nous acceptons les paiements en espèces, par virement bancaire, ainsi que par Visa, MasterCard et PayPal.</div>
+        </div>
+        <div class="FAQItem">
+            <div class="FAQQuestion">6. Combien de temps dure une réparation ?</div>
+            <div class="FAQAnswer">La durée de la réparation dépend de la complexité du problème et de la disponibilité des pièces. En général, la plupart des réparations sont effectuées sous 1 à 3 jours ouvrés.</div>
+        </div>
+        <div class="FAQItem">
+            <div class="FAQQuestion">7. Proposez-vous un service de conseil avant achat ?</div>
+            <div class="FAQAnswer">Oui, nos spécialistes sont à votre disposition pour vous conseiller et vous aider à choisir le matériel informatique adapté à vos besoins et à votre budget.</div>
+        </div>
+        <div class="FAQItem">
+            <div class="FAQQuestion">8. Puis-je retourner un produit s'il ne me convient pas ?</div>
+            <div class="FAQAnswer">Oui, conformément à notre politique de retour, vous pouvez retourner un produit dans un certain délai après l'achat, s'il n'a pas de défaut et n'a pas été utilisé.</div>
+        </div>
+        <div class="FAQItem">
+            <div class="FAQQuestion">9. Comment être informé des promotions et réductions ?</div>
+            <div class="FAQAnswer">Suivez nos actualités sur le site et sur les réseaux sociaux pour ne rien manquer de nos promotions, ventes et offres spéciales.</div>
+        </div>
+        <div class="FAQItem">
+        </div>
+    </div>
+    <button onclick="topFunction()" id="scrollBtn" title="Retour en haut">&#9650;</button>
+    <footer>
+        <div class="footer-buttons">
+            <a href="index.html"><button>Accueil</button></a>
+            <a href="repair.html"><button>Service de réparation</button></a>
+            <a href="contact.html"><button>À propos</button></a>
+            <a href="callback.html#faqcome"><button>FAQ</button></a>
+        </div>
+        <form class="footer-subscribe-form">
+            <input type="email" name="email" placeholder="Entrez votre Email">
+            <button type="submit">S’abonner aux bonus</button>
+        </form>
+        <div class="footer-container">
+            <div class="footer-image">
+                <p>Représentants officiels :</p>
+                <div class="footer__bottom-partners">
+                    <div class="footer__bottom-partner">
+                        <img src="photo/footer/gigabyte.png">
+                    </div>
+                    <div class="footer__bottom-partner">
+                        <img src="photo/footer/msi.png">
+                    </div>
+                    <div class="footer__bottom-partner">
+                        <img src="photo/footer/asus.png">
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content">
+                <p>&copy; 2025 Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/scripts.js"></script>
+</body>
+</html>

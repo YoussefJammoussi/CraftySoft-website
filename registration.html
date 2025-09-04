@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRAFTYSOFT</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/x-icon" href="https://media.licdn.com/dms/image/v2/D4D0BAQF1nqQhe3p06Q/company-logo_200_200/company-logo_200_200/0/1664960508577/crafty_soft_logo?e=2147483647&v=beta&t=IOW9hqdg11kypECWQe7U4c4zXem3TSwY5z3oL7UmN0g">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.reg-button[type="tel"]').inputmask({
+                mask: '380(99)999-99-99',
+                placeholder: "380(__)___-__-__",
+                showMaskOnHover: false,
+                onBeforePaste: function (pastedValue, opts) {
+                    return pastedValue.replace(/\D/g, '');
+                },
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="header-main">
+        <div class="menu-item">CRAFTYSOFT</div>
+        <div>
+            <a href="index.html"><button class="menu-button">Accueil</button></a>
+            <div class="menu-button-sub-wrapper"><button class="menu-button-sub">Clients</button>
+                <div class="menu-button-menu">
+                    <a href="catalog.html"><button class="menu-button-submenu">Produits</button></a>
+                    <a href="repair.html"><button class="menu-button-submenu">Réparation</button></a>
+                    <a href="index.html#salesection"><button class="menu-button-submenu">Promotions</button></a>
+                    <a href="contact.html#contact-review"><button class="menu-button-submenu">Avis</button></a>
+                    <a href="contact.html#contact-support"><button class="menu-button-submenu">Support</button></a>
+                    <a href="callback.html#faqcome"><button class="menu-button-submenu">FAQ</button></a>
+                </div>
+            </div>
+            <a href="contact.html"><button class="menu-button">À propos</button></a>
+        </div>
+        
+        <div class="login-logo">
+            <img src="photo/loginlogo.png" width="15" height="15" alt="Connexion">
+        </div>
+        <div class="login-button">
+            <a href="authorization.php"><button class="menu-button" id="login-button">Espace personnel</button></a>
+        </div>
+    </div>
+    <div class="search-container">
+        <div class="menu-item" id="katalog-container">
+            <button class="katalog-button">Catalogue</button>
+            <div class="katalog-submenu">
+                <a href="catalog.html#catalog-section1"><button class="katalog-button-submenu">Ordinateurs</button></a>
+                <a href="catalog.html#catalog-section2"><button class="katalog-button-submenu">Cartes mères</button></a>
+                <a href="catalog.html#catalog-section3"><button class="katalog-button-submenu">Cartes graphiques</button></a>
+                <a href="catalog.html#catalog-section4"><button class="katalog-button-submenu">Processeurs</button></a>
+                <a href="catalog.html#catalog-section5"><button class="katalog-button-submenu">Mémoire vive</button></a>
+                <a href="catalog.html#catalog-section6"><button class="katalog-button-submenu">Moniteurs</button></a>
+                <a href="catalog.html#catalog-section7"><button class="katalog-button-submenu">Stockage</button></a>
+                <a href="catalog.html#catalog-section8"><button class="katalog-button-submenu">Alimentations</button></a>
+                <a href="catalog.html#catalog-section9"><button class="katalog-button-submenu">Périphériques</button></a>
+            </div>
+        </div>
+        <input type="text" class="search-input" placeholder="Recherche...">
+        <div class="menu-item"><a href="callback.html"><button class="menu-button"><img src="photo/phone.png" width="15" height="15" alt="Téléphone"></button></a></div>
+        <div class="menu-item"><a href="cart.html"><button class="menu-button"><img src="photo/hfavorite.png" width="15" height="15" alt="Favoris"></button></a></div>
+        <div class="menu-item"><a href="cart.html"><button class="menu-button"><img src="photo/shopping-basket.png" width="15" height="15" alt="Panier"></button></a></div>
+    </div>
+    <div class="reg-header">
+        <p style="text-align: center; color: #fff; margin-bottom: 20px;">Si vous êtes déjà inscrit, rendez-vous sur la page</p>
+        <a href="authorization.php"><span class="rep-back-to"><strong>CONNEXION.</strong></span></a>
+        <h2 style="text-align: center;">Formulaire d'inscription</h2>
+        <form class="reg-fontstyle" method="post" id="registrationForm">
+            <input type="text" placeholder="Prénom :" class="reg-button" id="name" required><br>
+            <input type="text" placeholder="Nom :" class="reg-button" id="surname" required><br>
+            <input type="email" placeholder="Adresse e-mail :" class="reg-button" id="email" required><br>
+            <input type="text" placeholder="Choisissez un identifiant :" class="reg-button" id="username" required><br>
+            <input type="password" placeholder="Mot de passe :" class="reg-button" id="password" required><br>
+            <input type="password" placeholder="Confirmation du mot de passe :" class="reg-button" id="confirmPassword" required><br>
+            <label for="date">Date de naissance :</label>
+            <input type="date" id="dob" required><br>
+            <label for="gender" style="text-align:center;">Sexe :<br>
+                <input type="radio" id="male" name="gender" value="Homme">
+                <label for="male" style="margin-right:20px;">Homme</label>
+                <input type="radio" id="female" name="gender" value="Femme">
+                <label for="female">Femme</label><br>
+            </label>
+            <input type="tel" placeholder="380(__)___-__-__" class="reg-button" id="phoneNumber" required><br>
+            <label for="subscribe">S'abonner à la newsletter :<input type="checkbox" id="subscribe" name="subscribe"><br></label>
+            <label for="license" style="margin: 0 0 20 0;">
+                Contrat de licence :
+                <input type="checkbox" id="license" name="license">
+                <br>
+                <a href="license.html"><span class="rep-back-to" style="margin:0 10 0 0;">LIRE</span></a>
+            </label>
+            <button type="submit" class="reg-sumbit" id="submitButton">S'inscrire</button>
+        </form>
+    </div>
+    <footer>
+        <div class="footer-buttons">
+            <a href="index.html"><button>Accueil</button></a>
+            <a href="repair.html"><button>Service de réparation</button></a>
+            <a href="contact.html"><button>À propos</button></a>
+            <a href="callback.html#faqcome"><button>FAQ</button></a>
+        </div>
+        <form class="footer-subscribe-form">
+            <input type="email" name="email" placeholder="Entrez votre Email">
+            <button type="submit">S'abonner aux bonus</button>
+        </form>
+        <div class="footer-container">
+            <div class="footer-image">
+                <p>Partenaires officiels :</p>
+                <div class="footer__bottom-partners">
+                    <div class="footer__bottom-partner">
+                        <img src="photo/footer/gigabyte.png" alt="Gigabyte">
+                    </div>
+                    <div class="footer__bottom-partner">
+                        <img src="photo/footer/msi.png" alt="MSI">
+                    </div>
+                    <div class="footer__bottom-partner">
+                        <img src="photo/footer/asus.png" alt="ASUS">
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content">
+                <p>&copy; 2023 Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("registrationForm");
+            let subscribe = 0;
+
+            const subscribeCheckbox = document.getElementById("subscribe");
+
+            subscribeCheckbox.addEventListener("change", function () {
+                subscribe = this.checked ? 1 : 0;
+            });
+
+            form.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const licenseCheckbox = document.getElementById("license");
+                if (!licenseCheckbox.checked) {
+                    alert("Pour vous inscrire, vous devez accepter le contrat de licence.");
+                    return;
+                }
+
+                const name = document.getElementById("name").value;
+                const surname = document.getElementById("surname").value;
+                const email = document.getElementById("email").value;
+                const username = document.getElementById("username").value;
+                const password = document.getElementById("password").value;
+                const confirmPassword = document.getElementById("confirmPassword").value;
+                const dob = document.getElementById("dob").value;
+                const gender = document.querySelector('input[name="gender"]:checked').value;
+                const phoneNumber = document.getElementById("phoneNumber").value;
+
+                const data = new FormData();
+                data.append("name", name);
+                data.append("surname", surname);
+                data.append("email", email);
+                data.append("username", username);
+                data.append("password", password);
+                data.append("dob", dob);
+                data.append("gender", gender);
+                data.append("phoneNumber", phoneNumber);
+                data.append("subscribe", subscribe);
+
+                const xhr = new XMLHttpRequest();
+                xhr.open("POST", "php/save_registration.php", true);
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        alert(xhr.responseText);
+                        form.reset();
+                        window.location.href = "authorization.php";
+                    } else {
+                        alert("Une erreur s'est produite lors de l'envoi du formulaire.");
+                    }
+                };
+                xhr.send(data);
+            });
+        });
+    </script>
+</body>
+</html>

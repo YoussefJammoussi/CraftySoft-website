@@ -1,0 +1,430 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRAFTYSOFT</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" type="image/x-icon" href="https://media.licdn.com/dms/image/v2/D4D0BAQF1nqQhe3p06Q/company-logo_200_200/company-logo_200_200/0/1664960508577/crafty_soft_logo?e=2147483647&v=beta&t=IOW9hqdg11kypECWQe7U4c4zXem3TSwY5z3oL7UmN0g">
+    <style>
+        .cart-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #006400;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .cart-button:hover {
+            background-color: #28ce67;
+            transform: scale(1.05);
+        }
+        .delete-button {
+            display: block;
+            margin: 0 auto;
+            padding: 5px 10px;
+            background-color: #FF0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .delete-button:hover {
+            background-color: #FF6347;
+            transform: scale(1.05);
+        }
+        .center-text {
+            text-align: center;
+        }
+        .payment-container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+            overflow: auto;
+            padding-top: 100px;
+        }
+        .payment-section,
+        .payment-modal,
+        .adress-modal {
+            background-color: #f4f4f4;
+            padding: 20px;
+            margin: 0 0 300 0;
+            display: flex;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+        }
+        .payment-section h2,
+        .payment-modal h2,
+        .adress-modal h2 {
+            margin-top: 0;
+        }
+        .payment-section p,
+        .payment-modal p,
+        .adress-modal p {
+            margin: 0;
+        }
+        .payment-section input[type="text"],
+        .payment-modal input[type="text"] {
+            width: 180px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .payment-section button,
+        .payment-modal button,
+        .adress-modal button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .payment-section button:hover,
+        .payment-modal button:hover,
+        .adress-modal button:hover {
+            background-color: #45a049;
+        }
+        .close {
+            position: absolute;
+            margin: 0 0 218 370;
+            font-size: 34px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .close2 {
+            position: absolute;
+            margin: 0 0 215px 335px;
+            font-size: 34px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .close3 {
+            position: absolute;
+            margin: 0 0 215px 335px;
+            font-size: 34px;
+            top: 115px;
+            color: #ffffff;
+            cursor: pointer;
+        }
+        .payment-modal-sector input[type="text"] {
+            width: 67px;
+        }
+        .payment-modal-sector input[type="password"] {
+            width: 50px;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .adress-modal div {
+            display: flex;
+            align-items: baseline;
+        }
+        .adress-modal label {
+            flex: 1;
+        }
+        .adress-modal input[type="text"] {
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header-main">
+        <div class="menu-item">ByteVista</div>
+        <div>
+            <a href="index.html"><button class="menu-button">Accueil</button></a>
+            <div class="menu-button-sub-wrapper"><button class="menu-button-sub">Clients</button>
+                <div class="menu-button-menu">
+                    <a href="catalog.html"><button class="menu-button-submenu">Produits</button></a>
+                    <a href="repair.html"><button class="menu-button-submenu">Réparation</button></a>
+                    <a href="index.html#salesection"><button class="menu-button-submenu">Promotions</button></a>
+                    <a href="contact.html#contact-review"><button class="menu-button-submenu">Avis</button></a>
+                    <a href="contact.html#contact-support"><button class="menu-button-submenu">Support</button></a>
+                    <a href="callback.html#faqcome"><button class="menu-button-submenu">FAQ</button></a>
+                </div>
+            </div>
+            <a href="contact.html"><button class="menu-button">À propos</button></a>
+        </div>
+       
+        
+        <div class="login-logo">
+            <img src="photo/loginlogo.png" width="15" height="15">
+        </div>
+        <div class="login-button">
+            <a href="authorization.php"><button class="menu-button" id="login-button">Espace personnel</button></a>
+        </div>
+    </div>
+    <div class="search-container">
+        <div class="menu-item" id="katalog-container">
+            <button class="katalog-button">Catalogue</button>
+            <div class="katalog-submenu">
+                <a href="catalog.html#catalog-section1"><button class="katalog-button-submenu">Ordinateurs</button></a>
+                <a href="catalog.html#catalog-section2"><button class="katalog-button-submenu">Cartes mères</button></a>
+                <a href="catalog.html#catalog-section3"><button class="katalog-button-submenu">Cartes graphiques</button></a>
+                <a href="catalog.html#catalog-section4"><button class="katalog-button-submenu">Processeurs</button></a>
+                <a href="catalog.html#catalog-section5"><button class="katalog-button-submenu">Mémoire vive</button></a>
+                <a href="catalog.html#catalog-section6"><button class="katalog-button-submenu">Moniteurs</button></a>
+                <a href="catalog.html#catalog-section7"><button class="katalog-button-submenu">Stockages</button></a>
+                <a href="catalog.html#catalog-section8"><button class="katalog-button-submenu">Alimentations</button></a>
+                <a href="catalog.html#catalog-section9"><button class="katalog-button-submenu">Périphériques</button></a>
+            </div>
+        </div>
+        <input type="text" class="search-input" placeholder="Recherche...">
+        <div class="menu-item"><a href="callback.html"><button class="menu-button"><img src="photo/phone.png" width="15" height="15"></button></a></div>
+        <div class="menu-item"><a href="cart.html"><button class="menu-button"><img src="photo/hfavorite.png" width="15" height="15"></button></a></div>
+        <div class="menu-item"><a href="cart.html"><button class="menu-button"><img src="photo/shopping-basket.png" width="15" height="15"></button></a></div>
+    </div>
+
+    <button onclick="topFunction()" id="scrollBtn" title="Retour en haut">&#9650;</button>
+    <div style="margin: 50 auto 135 auto; max-width: 1200px; padding: 1px; color:white;">
+        <h1 style="text-align:center;">Panier</h1>
+        <table style="width:100%; border-collapse: collapse; color:white; table-layout: fixed;">
+            <thead>
+                <tr>
+                    <th style="border: 1px solid white; padding: 8px; width: 30%;">Nom du produit</th>
+                    <th style="border: 1px solid white; padding: 8px; width: 20%;">Prix</th>
+                    <th style="border: 1px solid white; padding: 8px; width: 20%;">Quantité</th>
+                    <th style="border: 1px solid white; padding: 8px; width: 20%;">Total</th>
+                    <th style="border: 1px solid white; padding: 8px; width: 10%;">X</th>
+                </tr>
+            </thead>
+            <tbody id="cart-items">
+            </tbody>
+        </table>
+        <p style="margin-top: 10px;">Montant total : <span id="total-price">0</span> DT</p>
+        <button onclick="showPaymentSection()" style="margin-top: 10px;" class="cart-button">Passer la commande</button>
+    </div>
+
+    <div id="payment-container" class="payment-container">
+        <div id="adress-section" class="adress-modal">
+            <span class="close3" onclick="closePaymentModal()">&times;</span>
+            <h2 style="text-align:center;">Commande :</h2>
+            <div style="margin: 10 0 10 0;">
+                <label for="PIB" style="text-align:center;">Vos initiales :</label>
+                <input type="text" id="PIB" style="width: 215px;">
+            </div>
+            <div style="margin: 10 0 10 0;">
+                <label for="phonem" style="text-align:center;">Numéro de téléphone :</label>
+                <input type="text" id="phonem" style="width: 215px;">
+            </div>
+            <div style="display:flex;">
+                <div style="margin: 10 0 10 0;">
+                    <label for="parish" style="text-align:center;">Région :</label>
+                    <input type="text" id="parish" style="margin: 5 0 10 0; width: 150px;">
+                </div>
+                <div style="margin: 10 0 10 0;">
+                    <label for="adress" style="text-align:center; margin-left: 10px;">Code postal :</label>
+                    <input type="text" id="adress" style="margin: 5 0 10 0; width:65px;">
+                </div>
+            </div><br>
+            <button onclick="showAdressModal()">Continuer</button>
+        </div>
+        <div id="payment-section" class="payment-section">
+            <span class="close2" onclick="closePaymentModal()">&times;</span>
+            <h2>Méthodes de paiement :</h2>
+            <p style="margin: 10 0 10 0;">Choisissez une méthode de paiement :</p>
+            <div style="margin: 10 0 10 0;">
+                <label for="credit-card">Carte de crédit / débit</label>
+                <input type="radio" id="credit-card" name="payment-method" value="credit-card">
+            </div>
+            <div style="margin: 10 0 10 0;">
+                <label for="paypal">PayPal</label>
+                <input type="radio" id="paypal" name="payment-method" value="paypal" style="margin: 5 0 10 0;">
+            </div><br>
+            <p>Montant total : <span id="total-price-payment">0</span> DT</p>
+            <button onclick="showPaymentModal()">Continuer le paiement</button>
+        </div>
+
+        <div id="payment-modal" class="payment-modal">
+            <span class="close" onclick="closePaymentModal()">&times;</span>
+            <h2>Entrez les informations de paiement</h2>
+            <label for="card-number">Numéro de carte :</label>
+            <input type="text" id="card-number" placeholder="XXXX-XXXX-XXXX-XXXX"><br>
+            <div class="payment-modal-sector">
+                <div class="payment-modal-sector-type2"><label for="expiration-date">Date d'expiration :</label>
+                    <input type="text" id="expiration-date" placeholder="MM/AA" style="margin-right: 50px;"><br>
+                </div>
+                <div class="payment-modal-sector-type2"><label for="cvv">CVV :</label>
+                    <input type="password" id="cvv" placeholder="XXX"><br>
+                </div>
+            </div>
+            <button onclick="processPayment()">Payer</button>
+        </div>
+    </div>
+
+    <footer style="margin:0;">
+        <div class="footer-buttons">
+            <a href="index.html"><button>Accueil</button></a>
+            <a href="repair.html"><button>Service de réparation</button></a>
+            <a href="contact.html"><button>À propos</button></a>
+            <a href="callback.html#faqcome"><button>FAQ</button></a>
+        </div>
+        <form class="footer-subscribe-form">
+            <input type="email" name="email" placeholder="Entrez votre Email">
+            <button type="submit">S’abonner aux bonus</button>
+        </form>
+        <div class="footer-container">
+            <div class="footer-image">
+                <p>Représentants officiels :</p>
+                <div class="footer__bottom-partners">
+                    <div class="footer__bottom-partner">
+                        <img src="photo/footer/gigabyte.png">
+                    </div>
+                    <div class="footer__bottom-partner">
+                        <img src="photo/footer/msi.png">
+                    </div>
+                    <div class="footer__bottom-partner">
+                        <img src="photo/footer/asus.png">
+                    </div>
+                </div>
+            </div>
+            <div class="footer-content">
+                <p>&copy;2025 Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/items.js"></script>
+    <script>
+        function formatCardNumber() {
+            var cardInput = document.getElementById('card-number');
+            var cardNumber = cardInput.value.replace(/\D/g, '');
+            var formattedNumber = '';
+            for (var i = 0; i < cardNumber.length; i++) {
+                if (i > 0 && i % 4 === 0) {
+                    formattedNumber += '-';
+                }
+                formattedNumber += cardNumber[i];
+            }
+            cardInput.value = formattedNumber;
+            limitCardNumberLength();
+        }
+        function formatExpirationDate() {
+            var expirationInput = document.getElementById('expiration-date');
+            var expirationDate = expirationInput.value.replace(/\D/g, '');
+            if (expirationDate.length > 2) {
+                expirationInput.value = expirationDate.substring(0, 2) + '/' + expirationDate.substring(2);
+            }
+            limitExpirationDateLength();
+        }
+        function limitCVVLength() {
+            var cvvInput = document.getElementById('cvv');
+            if (cvvInput.value.length > 3) {
+                cvvInput.value = cvvInput.value.slice(0, 3);
+            }
+        }
+        function limitCardNumberLength() {
+            var cardInput = document.getElementById('card-number');
+            var maxLength = 19;
+            if (cardInput.value.length > maxLength) {
+                cardInput.value = cardInput.value.slice(0, maxLength);
+            }
+        }
+        function limitExpirationDateLength() {
+            var expirationInput = document.getElementById('expiration-date');
+            var maxLength = 5;
+            if (expirationInput.value.length > maxLength) {
+                expirationInput.value = expirationInput.value.slice(0, maxLength);
+            }
+        }
+        function validateForm() {
+            var cardInput = document.getElementById('card-number');
+            var expirationInput = document.getElementById('expiration-date');
+            var cvvInput = document.getElementById('cvv');
+            if (cardInput.value === '' || expirationInput.value === '' || cvvInput.value === '') {
+                alert('Veuillez remplir tous les champs obligatoires');
+                return false;
+            }
+            if (cardInput.value.length !== 19) {
+                alert('Veuillez saisir un numéro de carte valide');
+                return false;
+            }
+            return true;
+        }
+        document.getElementById('card-number').addEventListener('input', formatCardNumber);
+        document.getElementById('expiration-date').addEventListener('input', formatExpirationDate);
+        document.getElementById('cvv').addEventListener('input', limitCVVLength);
+    </script>
+    <script>
+        var totalPricePayment = document.getElementById('total-price-payment');
+        totalPricePayment.innerText = totalPrice;
+        function processPayment() {
+            var paymentMethod = document.querySelector('input[name="payment-method"]:checked');
+            if (!paymentMethod) {
+                alert("Veuillez choisir une méthode de paiement.");
+                return;
+            }
+            var totalPrice = document.getElementById('total-price').innerText;
+            var cardNumber = document.getElementById('card-number').value;
+            var expirationDate = document.getElementById('expiration-date').value;
+            var cvv = document.getElementById('cvv').value;
+            if (paymentMethod.value === "credit-card") {
+                alert("Paiement par carte. Montant : " + totalPrice + " ₴. Redirection...");
+            } else if (paymentMethod.value === "paypal") {
+                alert("Paiement via PayPal. Montant : " + totalPrice + " ₴. Redirection...");
+            }
+            closePaymentModal();
+        }
+        function showPaymentSection() {
+            var paymentSection = document.getElementById("payment-container");
+            var paymentFinal = document.getElementById("payment-modal")
+            var paymentSection1 = document.getElementById("payment-section")
+            paymentSection.style.display = "flex";
+            paymentFinal.style.display = "none";
+            paymentSection1.style.display = "none";
+            var totalPrice = document.getElementById('total-price').innerText;
+            var totalPricePayment = document.getElementById('total-price-payment');
+            totalPricePayment.innerText = totalPrice;
+        }
+        function showAdressModal() {
+            var PIBInput = document.getElementById('PIB');
+            var phonemInput = document.getElementById('phonem');
+            var parishInput = document.getElementById('parish');
+            var adressInput = document.getElementById('adress');
+            if (PIBInput.value === '' || phonemInput.value === '' || parishInput.value === '' || adressInput.value === '') {
+                alert('Veuillez remplir tous les champs obligatoires');
+                return;
+            }
+            var paymentSection1 = document.getElementById("payment-section");
+            var paymentAdress = document.getElementById("adress-section")
+            paymentAdress.style.display = "none";
+            paymentSection1.style.display = "flex";
+            var totalPrice = document.getElementById('total-price').innerText;
+            var totalPricePayment = document.getElementById('total-price-payment');
+            totalPricePayment.innerText = totalPrice;
+        }
+        function showPaymentModal() {
+            var paymentMethod = document.querySelector('input[name="payment-method"]:checked');
+            if (!paymentMethod) {
+                alert("Veuillez choisir une méthode de paiement.");
+                return;
+            }
+            var paymentSection1 = document.getElementById("payment-section");
+            var paymentFinal = document.getElementById("payment-modal")
+            paymentSection1.style.display = "none";
+            paymentFinal.style.display = "flex";
+        }
+        function closePaymentModal() {
+            var paymentFinish = document.getElementById("payment-container");
+            var paymentSection1 = document.getElementById("payment-section");
+            var paymentFinal = document.getElementById("payment-modal")
+            paymentFinish.style.display = "none";
+            paymentSection1.style.display = "none";
+            paymentFinal.style.display = "none";
+        }
+    </script>
+</body>
+</html>
