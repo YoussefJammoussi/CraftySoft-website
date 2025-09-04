@@ -17,7 +17,8 @@ Notre mission est de fournir des solutions fiables et modernes adaptées aux bes
 
 ## 🛠️ Technologies utilisées  
 - 🌐 **HTML5**  
-- 🎨 **CSS3**  
+- 🎨 **CSS3**
+- ⚡ **JavaScript** 
 
 ---
 
